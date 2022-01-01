@@ -14,12 +14,11 @@ const dogFinderApp = {};
 // Create an init method
 dogFinderApp.init = () => {
     dogFinderApp.getDoggo();
-    console.log('what is happening');
 };
 
 // Store URL on Dog Finder App a property 
 
-dogFinderApp.url = 'https://api.thedogapi.com/images/search';
+dogFinderApp.url = 'https://api.thedogapi.com/v1/images/search?mime_types=gifs';
 
 // Store API key on the Dog Finder App object as a property:
 
@@ -28,7 +27,6 @@ dogFinderApp.apiKey = '67a37282-d23d-40cd-8461-024b9f0a2266';
 // Fetch request to the Dog API 
 
 dogFinderApp.getDoggo = () => {
-    console.log('my name is');
     const url = new URL(dogFinderApp.url);
     url.search = new URLSearchParams({
         client_id: dogFinderApp.apiKey
@@ -55,6 +53,10 @@ dogFinderApp.getDoggo = () => {
 
 dogFinderApp.displayDoggo = (dogObject) => {
     const img = document.createElement('img');
+    img.src = dogObject[0].url;
+
+    const gifSection = document.querySelector('.dog-gif');
+    gifSection.append(img);
 }
 
 
