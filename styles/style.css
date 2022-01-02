@@ -233,18 +233,81 @@ html {
           box-sizing: border-box;
 }
 
+html {
+  font-size: 125%;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+}
+
 h1 {
   margin: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
 }
 
 header {
   background-image: url(/assets/hero.jpg);
   background-size: cover;
   height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .dog-finder-logo {
   width: 200px;
   height: auto;
   position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.dog-finder-selection-flex {
+  min-width: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 2em;
+}
+.dog-finder-selection-flex h1 {
+  font-weight: 800;
+  font-size: 3.4rem;
+  color: whitesmoke;
+  letter-spacing: 1px;
+}
+.dog-finder-selection-flex a {
+  background-color: whitesmoke;
+  border: none;
+  padding: 1em 1.5em;
+  border-radius: 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: black;
+}
+
+main {
+  height: 100vh;
 }
