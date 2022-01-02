@@ -11,9 +11,17 @@
 
 const dogFinderApp = {};
 
+dogFinderApp.gifBtn = document.querySelector('.gif-btn');
+
+dogFinderApp.eventHandler = () => {
+    dogFinderApp.gifBtn.addEventListener('click', (event) => {
+        dogFinderApp.getDoggo();
+    })
+}
+
 // Create an init method
 dogFinderApp.init = () => {
-    dogFinderApp.getDoggo();
+    dogFinderApp.eventHandler();
 };
 
 // Store URL on Dog Finder App a property 
@@ -57,6 +65,7 @@ dogFinderApp.displayDoggo = (dogObject) => {
     img.src = dogObject[0].url;
 
     const gifSection = document.querySelector('.dog-gif');
+    gifSection.innerHTML = '';
     gifSection.append(img);
 }
 
