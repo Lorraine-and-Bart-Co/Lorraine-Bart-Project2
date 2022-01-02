@@ -18,7 +18,7 @@ dogFinderApp.init = () => {
 
 // Store URL on Dog Finder App a property 
 
-dogFinderApp.url = 'https://api.thedogapi.com/v1/images/search?mime_types=gifs';
+dogFinderApp.url = 'https://api.thedogapi.com/v1/images/search';
 
 // Store API key on the Dog Finder App object as a property:
 
@@ -29,7 +29,8 @@ dogFinderApp.apiKey = '67a37282-d23d-40cd-8461-024b9f0a2266';
 dogFinderApp.getDoggo = () => {
     const url = new URL(dogFinderApp.url);
     url.search = new URLSearchParams({
-        client_id: dogFinderApp.apiKey
+        client_id: dogFinderApp.apiKey,
+        mime_types: 'gif'
     })
 
     fetch(url)
