@@ -8,6 +8,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .dog-finder-logo {
@@ -42,5 +43,11 @@ header {
         font-weight: 800;
         letter-spacing: 1px;
         color: black;
+    }
+
+    ul {
+        display: flex;
+        gap: 1.5em;
+    
     }
 }

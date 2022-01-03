@@ -307,6 +307,12 @@ header {
   letter-spacing: 1px;
   color: black;
 }
+.dog-finder-selection-flex ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1.5em;
+}
 
 main {
   height: 100vh;
@@ -337,25 +343,24 @@ footer p {
   letter-spacing: 1px;
   font-style: italic;
 }
-
-.juno-credit {
-  text-align: center;
-}
-
-ul {
+footer ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
 }
-ul li {
+footer ul li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   gap: 10px;
 }
-ul i {
+footer ul i {
   color: whitesmoke;
   font-size: 1.2rem;
+}
+
+.juno-credit {
+  text-align: center;
 }
