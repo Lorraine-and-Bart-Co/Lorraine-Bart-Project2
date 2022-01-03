@@ -16,7 +16,15 @@ dogFinderApp.gifBtn = document.querySelector('.gif-btn');
 dogFinderApp.eventHandler = () => {
     dogFinderApp.gifBtn.addEventListener('click', (event) => {
         dogFinderApp.getDoggo();
+        window.removeEventListener('scroll', dogFinderApp.noScroll);
     })
+
+    // we will try to put an event listener on the window object and prevent scrolling
+    window.addEventListener('scroll', dogFinderApp.noScroll);
+}
+
+dogFinderApp.noScroll = () => {
+    window.scrollTo(0, 0);
 }
 
 // Create an init method
