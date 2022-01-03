@@ -11,9 +11,25 @@
 
 const dogFinderApp = {};
 
+dogFinderApp.gifBtn = document.querySelector('.gif-btn');
+
+dogFinderApp.eventHandler = () => {
+    dogFinderApp.gifBtn.addEventListener('click', (event) => {
+        dogFinderApp.getDoggo();
+        window.removeEventListener('scroll', dogFinderApp.noScroll);
+    })
+
+    // we will try to put an event listener on the window object and prevent scrolling
+    window.addEventListener('scroll', dogFinderApp.noScroll);
+}
+
+dogFinderApp.noScroll = () => {
+    window.scrollTo(0, 0);
+}
+
 // Create an init method
 dogFinderApp.init = () => {
-    dogFinderApp.getDoggo();
+    dogFinderApp.eventHandler();
 };
 
 // Store URL on Dog Finder App a property 
@@ -57,6 +73,7 @@ dogFinderApp.displayDoggo = (dogObject) => {
     img.src = dogObject[0].url;
 
     const gifSection = document.querySelector('.dog-gif');
+    gifSection.innerHTML = '';
     gifSection.append(img);
 }
 
