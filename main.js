@@ -17,6 +17,7 @@ dogFinderApp.randomBtn = document.querySelector('.random-btn');
 
 // section variables
 dogFinderApp.gifSection = document.getElementById('gif');
+dogFinderApp.randomSection = document.getElementById('random-dog');
 
 dogFinderApp.eventHandler = () => {
 
@@ -29,7 +30,11 @@ dogFinderApp.eventHandler = () => {
     })
 
     // define an event listener for the random-dog button
-    dogFinderApp.randomBtn.addEventListener();
+    dogFinderApp.randomBtn.addEventListener('click', () => {
+        dogFinderApp.randomSection.classList.add('random-dog');
+        dogFinderApp.getDoggo('png');
+        window.removeEventListener('scroll', dogFinderApp.noScroll);
+    });
 
 
     

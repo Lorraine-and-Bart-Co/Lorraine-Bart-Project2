@@ -318,7 +318,8 @@ main {
   height: 100vh;
 }
 
-.dog-gif {
+.dog-gif,
+.random-dog {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
