@@ -332,6 +332,10 @@ main {
   height: 100%;
   background-color: black;
 }
+.dog-gif img,
+.random-dog img {
+  max-height: 500px;
+}
 
 footer {
   padding: 1.5em 0;
