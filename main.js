@@ -11,14 +11,28 @@
 
 const dogFinderApp = {};
 
+// button varibles
 dogFinderApp.gifBtn = document.querySelector('.gif-btn');
+dogFinderApp.randomBtn = document.querySelector('.random-btn');
+
+// section variables
+dogFinderApp.gifSection = document.getElementById('gif');
 
 dogFinderApp.eventHandler = () => {
+
+    // define event handler for the gif button
     dogFinderApp.gifBtn.addEventListener('click', (event) => {
-        dogFinderApp.getDoggo();
+        // added dog-gif class to section so that it appears
+        dogFinderApp.gifSection.classList.add('dog-gif');
+        dogFinderApp.getDoggo('gif');
         window.removeEventListener('scroll', dogFinderApp.noScroll);
     })
 
+    // define an event listener for the random-dog button
+    dogFinderApp.randomBtn.addEventListener();
+
+
+    
     // we will try to put an event listener on the window object and prevent scrolling
     window.addEventListener('scroll', dogFinderApp.noScroll);
 }
@@ -42,11 +56,11 @@ dogFinderApp.apiKey = '67a37282-d23d-40cd-8461-024b9f0a2266';
 
 // Fetch request to the Dog API 
 
-dogFinderApp.getDoggo = () => {
+dogFinderApp.getDoggo = (imageType) => {
     const url = new URL(dogFinderApp.url);
     url.search = new URLSearchParams({
         client_id: dogFinderApp.apiKey,
-        mime_types: 'gif'
+        mime_types: imageType
     })
 
     fetch(url)
@@ -69,6 +83,8 @@ dogFinderApp.getDoggo = () => {
 // we do this using innerHTML = ''; on the giphy container
 
 dogFinderApp.displayDoggo = (dogObject) => {
+
+
     const img = document.createElement('img');
     img.src = dogObject[0].url;
 
