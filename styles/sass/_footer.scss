@@ -9,13 +9,8 @@ footer{
         letter-spacing: 1px;
         font-style: italic;
     }
-}
 
-.juno-credit{
-    text-align: center;
-}
-
-ul {
+    ul {
     display: flex;
     justify-content: space-around;
 
@@ -29,3 +24,9 @@ ul {
         font-size: 1.2rem;
     }
 }
+}
+
+.juno-credit{
+    text-align: center;
+}
+
