@@ -247,10 +247,23 @@ h1 {
 
 ul {
   list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 a {
   text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.wrapper {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
 }
 
 header {
@@ -274,11 +287,9 @@ header {
   height: auto;
   position: absolute;
   top: 0px;
-  left: 0px;
 }
 
 .dog-finder-selection-flex {
-  min-width: 400px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
