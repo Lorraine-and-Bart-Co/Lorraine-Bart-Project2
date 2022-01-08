@@ -235,6 +235,7 @@ html {
 
 html {
   font-size: 125%;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -392,6 +393,14 @@ footer ul i {
 
 @media (min-width: 840px) {
   .dog-finder-logo {
-    left: 0px;
+    left: 1.5em;
+    top: 1.5em;
+  }
+
+  .dog-finder-selection-flex ul {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
   }
 }
