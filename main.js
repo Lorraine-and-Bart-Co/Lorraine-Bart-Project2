@@ -75,7 +75,10 @@ dogFinderApp.getDoggo = (imageType, section) => {
     const url = new URL(dogFinderApp.url);
     url.search = new URLSearchParams({
         client_id: dogFinderApp.apiKey,
-        mime_types: imageType
+        mime_types: imageType,
+        size: 'full',
+        has_breeds: true,
+        // limit: 5
     })
 
     fetch(url)
