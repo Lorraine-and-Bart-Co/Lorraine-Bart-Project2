@@ -1,5 +1,6 @@
 html {
     font-size: 125%;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -12,8 +13,22 @@ h1 {
 
 ul {
     list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 a {
     text-decoration: none;
+}
+
+img {
+    // responsive image styles
+    max-width: 100%;
+    height: auto;
+}
+
+.wrapper {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
 }

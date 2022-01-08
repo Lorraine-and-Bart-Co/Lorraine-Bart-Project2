@@ -2,6 +2,7 @@
 header {
     background-image: url(/assets/hero.jpg);
     background-size: cover;
+    background-position: center;
     height: 100vh;
 
     // flex properties
@@ -16,11 +17,9 @@ header {
     height: auto;
     position: absolute;
     top: 0px;
-    left: 0px;
 }
 
 .dog-finder-selection-flex {
-    min-width: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,7 +27,7 @@ header {
 
     h1 {
         font-weight: 800;
-        font-size: 3.4rem;
+        font-size: clamp(.8rem, .8rem + 2vw, 3.4rem);
         color: whitesmoke;
         letter-spacing: 1px;
     }
@@ -47,7 +46,9 @@ header {
 
     ul {
         display: flex;
-        gap: 1.5em;
+        gap: 3em;
+        flex-direction: column;
+        align-items: center;
     
     }
 }

@@ -235,6 +235,7 @@ html {
 
 html {
   font-size: 125%;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -247,15 +248,29 @@ h1 {
 
 ul {
   list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 a {
   text-decoration: none;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.wrapper {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+}
+
 header {
   background-image: url(/assets/hero.jpg);
   background-size: cover;
+  background-position: center;
   height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -273,11 +288,9 @@ header {
   height: auto;
   position: absolute;
   top: 0px;
-  left: 0px;
 }
 
 .dog-finder-selection-flex {
-  min-width: 400px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -292,7 +305,7 @@ header {
 }
 .dog-finder-selection-flex h1 {
   font-weight: 800;
-  font-size: 3.4rem;
+  font-size: clamp(.8rem, .8rem + 2vw, 3.4rem);
   color: whitesmoke;
   letter-spacing: 1px;
 }
@@ -311,7 +324,14 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 1.5em;
+  gap: 3em;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 main {
@@ -338,8 +358,9 @@ main {
 }
 
 footer {
-  padding: 1.5em 0;
-  background-color: #353333;
+  padding: 1em 0;
+  background-color: black;
+  border-top: solid 2px rgba(243, 239, 239, 0.7);
 }
 footer p {
   color: whitesmoke;
@@ -354,12 +375,20 @@ footer ul {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 footer ul li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   gap: 10px;
+  margin-top: 0.5em;
 }
 footer ul i {
   color: whitesmoke;
@@ -368,4 +397,30 @@ footer ul i {
 
 .juno-credit {
   text-align: center;
+}
+
+@media (min-width: 840px) {
+  .dog-finder-logo {
+    left: 1.5em;
+    top: 1.5em;
+  }
+
+  .dog-finder-selection-flex ul {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+@media (min-width: 1000px) {
+  footer ul {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    gap: 2em;
+  }
 }

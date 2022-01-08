@@ -1,0 +1,15 @@
+// Media Query Min Width 840px:
+
+@media (min-width: 840px) {
+    // Header 
+        .dog-finder-logo {
+            left: 1.5em;
+            top: 1.5em;
+        }
+    
+        .dog-finder-selection-flex {
+            ul {
+                flex-direction: row;
+            }
+        }
+}
