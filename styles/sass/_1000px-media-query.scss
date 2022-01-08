@@ -1,0 +1,13 @@
+// 1000px Media Query
+
+@media (min-width: 1000px) {
+    // Footer 
+
+    footer {
+        ul {
+            flex-direction: row;
+            justify-content: center;
+            gap: 2em;
+        }
+    }
+}
