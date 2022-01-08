@@ -389,3 +389,9 @@ footer ul i {
 .juno-credit {
   text-align: center;
 }
+
+@media (min-width: 840px) {
+  .dog-finder-logo {
+    left: 0px;
+  }
+}
