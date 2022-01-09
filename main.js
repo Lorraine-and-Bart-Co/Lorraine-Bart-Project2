@@ -75,7 +75,9 @@ dogFinderApp.getDoggo = (imageType, section) => {
     const url = new URL(dogFinderApp.url);
     url.search = new URLSearchParams({
         client_id: dogFinderApp.apiKey,
-        mime_types: imageType
+        // mime_types: imageType,
+        has_breeds: true,
+        // limit: 15
     })
 
     fetch(url)
@@ -84,7 +86,7 @@ dogFinderApp.getDoggo = (imageType, section) => {
     })
     .then((jsonData) => {
         dogFinderApp.displayDoggo(jsonData, section);
-        console.log(jsonData);
+        // console.log(jsonData);
     })
     .catch((err) => {
         console.log(`Your error is ${err}.`);
@@ -98,14 +100,57 @@ dogFinderApp.getDoggo = (imageType, section) => {
 // we do this using innerHTML = ''; on the giphy container
 
 dogFinderApp.displayDoggo = (dogObject, section) => {
+    const dogFactArray = [];
+    dogFactArray.push(`Temperament: ${dogObject[0].breeds[0].temperament}`);
+    dogFactArray.push(`Life Span: ${dogObject[0].breeds[0].life_span}`);
+    dogFactArray.push(`Bred For: ${dogObject[0].breeds[0].bred_for}`);
+    dogFactArray.push(`Weight: ${dogObject[0].breeds[0].weight.metric} kg`);
 
 
     const img = document.createElement('img');
     img.src = dogObject[0].url;
+    img.alt = dogObject[0].breeds[0].name;
+
+ // Creating an article element to hold our dog breed information: 
+    const breedInfo = document.createElement('article');
+    breedInfo.classList.add('dog-container');
+    const ulElement = document.createElement('ul');
+    ulElement.classList.add('dog-info');
+    // Appending dog breed information into article element
+    
+
+    // We want to insert the name into a <h2> 
+    const breedName = document.createElement('h2');
+    breedName.textContent = dogObject[0].breeds[0].name;
+    breedInfo.append(breedName);
+
+    // adding dog feature information beside the image as <p> elements nested into an <li>
+    dogFactArray.forEach((dogFact) => {
+        // first we want to create our variables that will be reused
+        const pElement = document.createElement('p');
+        const liElement = document.createElement('li');
+        
+        // then we want to put the dog fact inside of these variables
+        pElement.textContent = dogFact;
+        liElement.appendChild(pElement);
+
+        // then we want to append these variables to the ul
+        ulElement.appendChild(liElement);
+    })
+
+
+
+    // Appending the ul element into the article element 
+    breedInfo.appendChild(ulElement);
+
+   
+
 
     const displaySection = document.querySelector(section);
     displaySection.innerHTML = '';
     displaySection.append(img);
+    displaySection.append(breedInfo);
+    
 }
 
 
