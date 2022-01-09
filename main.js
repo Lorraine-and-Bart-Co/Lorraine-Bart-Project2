@@ -106,10 +106,16 @@ dogFinderApp.displayDoggo = (dogObject, section) => {
     dogFactArray.push(`Bred For: ${dogObject[0].breeds[0].bred_for}`);
     dogFactArray.push(`Weight: ${dogObject[0].breeds[0].weight.metric} kg`);
 
+    const imgContainer = document.createElement('div');
+    imgContainer.classList.add('image-container');
+    
+
 
     const img = document.createElement('img');
     img.src = dogObject[0].url;
     img.alt = dogObject[0].breeds[0].name;
+
+    imgContainer.appendChild(img);
 
  // Creating an article element to hold our dog breed information: 
     const breedInfo = document.createElement('article');
@@ -148,7 +154,7 @@ dogFinderApp.displayDoggo = (dogObject, section) => {
 
     const displaySection = document.querySelector(section);
     displaySection.innerHTML = '';
-    displaySection.append(img);
+    displaySection.append(imgContainer);
     displaySection.append(breedInfo);
     
 }

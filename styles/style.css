@@ -357,9 +357,9 @@ main {
   background-color: black;
   color: whitesmoke;
 }
-.dog-gif img,
-.random-dog img {
-  max-height: 500px;
+.dog-gif .image-container,
+.random-dog .image-container {
+  height: 50%;
 }
 .dog-gif .dog-info,
 .random-dog .dog-info {
@@ -374,6 +374,7 @@ main {
       -ms-flex-align: center;
           align-items: center;
   gap: 0.5em;
+  height: 50%;
 }
 .dog-gif .dog-info p,
 .random-dog .dog-info p {

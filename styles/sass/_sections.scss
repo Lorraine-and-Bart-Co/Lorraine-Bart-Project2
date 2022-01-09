@@ -8,15 +8,17 @@
     background-color:black;
     color: whitesmoke;
 
-    img {
-        max-height: 500px;
+    .image-container {
+        height: 50%;
     }
+  
 
     .dog-info {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 0.5em;
+        height: 50%;
 
         p {
             text-align: center;
