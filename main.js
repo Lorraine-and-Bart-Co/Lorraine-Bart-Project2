@@ -31,7 +31,6 @@ dogFinderApp.eventHandler = () => {
         // added dog-gif class to section so that it appears
         dogFinderApp.gifSection.classList.add('dog-gif');
         dogFinderApp.getDoggo('gif', '.dog-gif');
-        window.removeEventListener('scroll', dogFinderApp.noScroll);
     })
 
     // define an event listener for the random-dog button
@@ -43,17 +42,8 @@ dogFinderApp.eventHandler = () => {
 
         dogFinderApp.randomSection.classList.add('random-dog');
         dogFinderApp.getDoggo('png', '.random-dog');
-        window.removeEventListener('scroll', dogFinderApp.noScroll);
     });
 
-
-    
-    // we will try to put an event listener on the window object and prevent scrolling
-    window.addEventListener('scroll', dogFinderApp.noScroll);
-}
-
-dogFinderApp.noScroll = () => {
-    window.scrollTo(0, 0);
 }
 
 // Create an init method
@@ -99,6 +89,17 @@ dogFinderApp.getDoggo = (imageType, section) => {
 // this function will clear everything on the page first
 // we do this using innerHTML = ''; on the giphy container
 
+dogFinderApp.bringMeBack = () => {
+    // we want our page to scroll back to our header first
+    window.scrollTo(0,0);
+
+    // secondly we want our section to clear of all populated data
+    dogFinderApp.displaySection.innerHTML = '';
+    dogFinderApp.displaySection.classList.remove('random-dog');
+};
+
+
+
 dogFinderApp.displayDoggo = (dogObject, section) => {
     const dogFactArray = [];
     dogFactArray.push(`Temperament: ${dogObject[0].breeds[0].temperament}`);
@@ -106,18 +107,23 @@ dogFinderApp.displayDoggo = (dogObject, section) => {
     dogFactArray.push(`Bred For: ${dogObject[0].breeds[0].bred_for}`);
     dogFactArray.push(`Weight: ${dogObject[0].breeds[0].weight.metric} kg`);
 
+    const imgContainer = document.createElement('div');
+    imgContainer.classList.add('image-container');
+    
+
 
     const img = document.createElement('img');
     img.src = dogObject[0].url;
     img.alt = dogObject[0].breeds[0].name;
 
+    imgContainer.appendChild(img);
+
  // Creating an article element to hold our dog breed information: 
     const breedInfo = document.createElement('article');
-    breedInfo.classList.add('dog-container');
+    breedInfo.classList.add('dog-info-container');
     const ulElement = document.createElement('ul');
     ulElement.classList.add('dog-info');
-    // Appending dog breed information into article element
-    
+     
 
     // We want to insert the name into a <h2> 
     const breedName = document.createElement('h2');
@@ -143,13 +149,24 @@ dogFinderApp.displayDoggo = (dogObject, section) => {
     // Appending the ul element into the article element 
     breedInfo.appendChild(ulElement);
 
-   
+    //    Creating a button below dog breed info
+    const searchAgainBtn = document.createElement('a');
+    searchAgainBtn.classList.add('btn-style');
+    searchAgainBtn.textContent = 'Search Again';
+
+    // Create event listener, upon 'click' button will take user to the top of the page and reset the inner html to '';
+
+    searchAgainBtn.addEventListener('click', dogFinderApp.bringMeBack);
+    breedInfo.appendChild(searchAgainBtn);
+
+    
 
 
-    const displaySection = document.querySelector(section);
-    displaySection.innerHTML = '';
-    displaySection.append(img);
-    displaySection.append(breedInfo);
+
+    dogFinderApp.displaySection = document.querySelector(section);
+    dogFinderApp.displaySection.innerHTML = '';
+    dogFinderApp.displaySection.append(imgContainer);
+    dogFinderApp.displaySection.append(breedInfo);
     
 }
 

@@ -3,7 +3,7 @@ header {
     background-image: url(/assets/hero.jpg);
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    height: 85vh;
 
     // flex properties
     display: flex;
@@ -11,6 +11,18 @@ header {
     align-items: center;
 
 }
+
+  .btn-style {
+        background-color: whitesmoke;
+        border: none;
+        padding: 1em 1.5em;
+        border-radius: 10px;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-weight: 800;
+        letter-spacing: 1px;
+        color: black;
+    }
 
 .dog-finder-logo {
     width: 200px;
@@ -32,17 +44,7 @@ header {
         letter-spacing: 1px;
     }
 
-    a {
-        background-color: whitesmoke;
-        border: none;
-        padding: 1em 1.5em;
-        border-radius: 10px;
-        cursor: pointer;
-        text-transform: uppercase;
-        font-weight: 800;
-        letter-spacing: 1px;
-        color: black;
-    }
+  
 
     ul {
         display: flex;
