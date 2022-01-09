@@ -343,6 +343,10 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -351,10 +355,39 @@ main {
           align-items: center;
   height: 100%;
   background-color: black;
+  color: whitesmoke;
 }
 .dog-gif img,
 .random-dog img {
   max-height: 500px;
+}
+.dog-gif .dog-info,
+.random-dog .dog-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.5em;
+}
+.dog-gif .dog-info p,
+.random-dog .dog-info p {
+  text-align: center;
+}
+.dog-gif .dog-container,
+.random-dog .dog-container {
+  padding: 2em 3em;
+  border: 2px solid red;
+}
+.dog-gif .dog-container h2,
+.random-dog .dog-container h2 {
+  text-align: center;
+  padding-bottom: 0.7em;
 }
 
 footer {

@@ -100,6 +100,11 @@ dogFinderApp.getDoggo = (imageType, section) => {
 // we do this using innerHTML = ''; on the giphy container
 
 dogFinderApp.displayDoggo = (dogObject, section) => {
+    const dogFactArray = [];
+    dogFactArray.push(`Temperament: ${dogObject[0].breeds[0].temperament}`);
+    dogFactArray.push(`Life Span: ${dogObject[0].breeds[0].life_span}`);
+    dogFactArray.push(`Bred For: ${dogObject[0].breeds[0].bred_for}`);
+    dogFactArray.push(`Weight: ${dogObject[0].breeds[0].weight.metric} kg`);
 
 
     const img = document.createElement('img');
@@ -108,29 +113,35 @@ dogFinderApp.displayDoggo = (dogObject, section) => {
 
  // Creating an article element to hold our dog breed information: 
     const breedInfo = document.createElement('article');
+    breedInfo.classList.add('dog-container');
     const ulElement = document.createElement('ul');
+    ulElement.classList.add('dog-info');
     // Appending dog breed information into article element
-    console.log(dogObject[0]);
-
-    // Appending the ul element into the article element 
-    breedInfo.appendChild(ulElement);
     
 
     // We want to insert the name into a <h2> 
     const breedName = document.createElement('h2');
     breedName.textContent = dogObject[0].breeds[0].name;
-    breedName.style.color = 'whitesmoke';
     breedInfo.append(breedName);
 
     // adding dog feature information beside the image as <p> elements nested into an <li>
-    
-    const liElement = document.createElement('li');
-    const temperamentP = document.createElement('p');
-    liElement.appendChild(temperamentP);
+    dogFactArray.forEach((dogFact) => {
+        // first we want to create our variables that will be reused
+        const pElement = document.createElement('p');
+        const liElement = document.createElement('li');
+        
+        // then we want to put the dog fact inside of these variables
+        pElement.textContent = dogFact;
+        liElement.appendChild(pElement);
 
-    // appending the liElement to the ulElement 
+        // then we want to append these variables to the ul
+        ulElement.appendChild(liElement);
+    })
 
-    ulElement.appendChild(liElement);
+
+
+    // Appending the ul element into the article element 
+    breedInfo.appendChild(ulElement);
 
    
 
