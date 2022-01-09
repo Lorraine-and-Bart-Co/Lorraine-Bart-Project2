@@ -283,6 +283,18 @@ header {
           align-items: center;
 }
 
+.btn-style {
+  background-color: whitesmoke;
+  border: none;
+  padding: 1em 1.5em;
+  border-radius: 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: black;
+}
+
 .dog-finder-logo {
   width: 200px;
   height: auto;
@@ -308,17 +320,6 @@ header {
   font-size: clamp(.8rem, .8rem + 2vw, 3.4rem);
   color: whitesmoke;
   letter-spacing: 1px;
-}
-.dog-finder-selection-flex a {
-  background-color: whitesmoke;
-  border: none;
-  padding: 1em 1.5em;
-  border-radius: 10px;
-  cursor: pointer;
-  text-transform: uppercase;
-  font-weight: 800;
-  letter-spacing: 1px;
-  color: black;
 }
 .dog-finder-selection-flex ul {
   display: -webkit-box;
@@ -389,13 +390,12 @@ main {
 .random-dog .dog-info p {
   text-align: center;
 }
-.dog-gif .dog-container,
-.random-dog .dog-container {
+.dog-gif .dog-info-container,
+.random-dog .dog-info-container {
   padding: 2em 3em;
-  border: 2px solid red;
 }
-.dog-gif .dog-container h2,
-.random-dog .dog-container h2 {
+.dog-gif .dog-info-container h2,
+.random-dog .dog-info-container h2 {
   text-align: center;
   padding-bottom: 0.7em;
 }

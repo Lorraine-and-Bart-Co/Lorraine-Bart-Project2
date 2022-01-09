@@ -99,6 +99,13 @@ dogFinderApp.getDoggo = (imageType, section) => {
 // this function will clear everything on the page first
 // we do this using innerHTML = ''; on the giphy container
 
+dogFinderApp.bringMeBack = () => {
+
+
+}
+
+
+
 dogFinderApp.displayDoggo = (dogObject, section) => {
     const dogFactArray = [];
     dogFactArray.push(`Temperament: ${dogObject[0].breeds[0].temperament}`);
@@ -119,11 +126,10 @@ dogFinderApp.displayDoggo = (dogObject, section) => {
 
  // Creating an article element to hold our dog breed information: 
     const breedInfo = document.createElement('article');
-    breedInfo.classList.add('dog-container');
+    breedInfo.classList.add('dog-info-container');
     const ulElement = document.createElement('ul');
     ulElement.classList.add('dog-info');
-    // Appending dog breed information into article element
-    
+     
 
     // We want to insert the name into a <h2> 
     const breedName = document.createElement('h2');
@@ -149,7 +155,18 @@ dogFinderApp.displayDoggo = (dogObject, section) => {
     // Appending the ul element into the article element 
     breedInfo.appendChild(ulElement);
 
-   
+    //    Creating a button below dog breed info
+    const searchAgainBtn = document.createElement('a');
+    searchAgainBtn.classList.add('btn-style');
+    searchAgainBtn.textContent = 'Search Again';
+
+    // Create event listener, upon 'click' button will take user to the top of the page and reset the inner html to '';
+
+    searchAgainBtn.addEventListener('click', dogFinderApp.bringMeBack);
+    breedInfo.appendChild(searchAgainBtn);
+
+    
+
 
 
     const displaySection = document.querySelector(section);
