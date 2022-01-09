@@ -75,10 +75,9 @@ dogFinderApp.getDoggo = (imageType, section) => {
     const url = new URL(dogFinderApp.url);
     url.search = new URLSearchParams({
         client_id: dogFinderApp.apiKey,
-        mime_types: imageType,
-        size: 'full',
+        // mime_types: imageType,
         has_breeds: true,
-        // limit: 5
+        // limit: 15
     })
 
     fetch(url)
@@ -87,7 +86,7 @@ dogFinderApp.getDoggo = (imageType, section) => {
     })
     .then((jsonData) => {
         dogFinderApp.displayDoggo(jsonData, section);
-        console.log(jsonData);
+        // console.log(jsonData);
     })
     .catch((err) => {
         console.log(`Your error is ${err}.`);
@@ -106,9 +105,26 @@ dogFinderApp.displayDoggo = (dogObject, section) => {
     const img = document.createElement('img');
     img.src = dogObject[0].url;
 
+ // Creating an article element to hold our dog breed information: 
+    const breedInfo = document.createElement('article');
+    // Appending dog breed information into article element
+    // console.log(dogObject[0].breeds[0].name);
+    
+
+    // We want to insert the name into a <p> 
+    const breedName = document.createElement('p');
+    breedName.textContent = dogObject[0].breeds[0].name;
+    breedName.style.color = 'whitesmoke';
+    breedInfo.append(breedName);
+
+   
+
+
     const displaySection = document.querySelector(section);
     displaySection.innerHTML = '';
     displaySection.append(img);
+    displaySection.append(breedInfo);
+    
 }
 
 
