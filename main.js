@@ -31,7 +31,6 @@ dogFinderApp.eventHandler = () => {
         // added dog-gif class to section so that it appears
         dogFinderApp.gifSection.classList.add('dog-gif');
         dogFinderApp.getDoggo('gif', '.dog-gif');
-        window.removeEventListener('scroll', dogFinderApp.noScroll);
     })
 
     // define an event listener for the random-dog button
@@ -43,17 +42,8 @@ dogFinderApp.eventHandler = () => {
 
         dogFinderApp.randomSection.classList.add('random-dog');
         dogFinderApp.getDoggo('png', '.random-dog');
-        window.removeEventListener('scroll', dogFinderApp.noScroll);
     });
 
-
-    
-    // we will try to put an event listener on the window object and prevent scrolling
-    window.addEventListener('scroll', dogFinderApp.noScroll);
-}
-
-dogFinderApp.noScroll = () => {
-    window.scrollTo(0, 0);
 }
 
 // Create an init method
@@ -100,9 +90,13 @@ dogFinderApp.getDoggo = (imageType, section) => {
 // we do this using innerHTML = ''; on the giphy container
 
 dogFinderApp.bringMeBack = () => {
+    // we want our page to scroll back to our header first
+    window.scrollTo(0,0);
 
-
-}
+    // secondly we want our section to clear of all populated data
+    dogFinderApp.displaySection.innerHTML = '';
+    dogFinderApp.displaySection.classList.remove('random-dog');
+};
 
 
 
@@ -169,10 +163,10 @@ dogFinderApp.displayDoggo = (dogObject, section) => {
 
 
 
-    const displaySection = document.querySelector(section);
-    displaySection.innerHTML = '';
-    displaySection.append(imgContainer);
-    displaySection.append(breedInfo);
+    dogFinderApp.displaySection = document.querySelector(section);
+    dogFinderApp.displaySection.innerHTML = '';
+    dogFinderApp.displaySection.append(imgContainer);
+    dogFinderApp.displaySection.append(breedInfo);
     
 }
 
