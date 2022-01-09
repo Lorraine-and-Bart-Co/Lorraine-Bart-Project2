@@ -104,18 +104,33 @@ dogFinderApp.displayDoggo = (dogObject, section) => {
 
     const img = document.createElement('img');
     img.src = dogObject[0].url;
+    img.alt = dogObject[0].breeds[0].name;
 
  // Creating an article element to hold our dog breed information: 
     const breedInfo = document.createElement('article');
+    const ulElement = document.createElement('ul');
     // Appending dog breed information into article element
-    // console.log(dogObject[0].breeds[0].name);
+    console.log(dogObject[0]);
+
+    // Appending the ul element into the article element 
+    breedInfo.appendChild(ulElement);
     
 
-    // We want to insert the name into a <p> 
-    const breedName = document.createElement('p');
+    // We want to insert the name into a <h2> 
+    const breedName = document.createElement('h2');
     breedName.textContent = dogObject[0].breeds[0].name;
     breedName.style.color = 'whitesmoke';
     breedInfo.append(breedName);
+
+    // adding dog feature information beside the image as <p> elements nested into an <li>
+    
+    const liElement = document.createElement('li');
+    const temperamentP = document.createElement('p');
+    liElement.appendChild(temperamentP);
+
+    // appending the liElement to the ulElement 
+
+    ulElement.appendChild(liElement);
 
    
 
