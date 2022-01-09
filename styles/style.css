@@ -335,8 +335,7 @@ header {
           align-items: center;
 }
 
-.dog-gif,
-.random-dog {
+.dog-section {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -354,22 +353,19 @@ header {
   background-color: black;
   color: whitesmoke;
 }
-.dog-gif .image-container,
-.random-dog .image-container {
+.dog-section .image-container {
   max-height: 50%;
   margin: 0 auto;
   text-align: center;
 }
-.dog-gif .image-container img,
-.random-dog .image-container img {
+.dog-section .image-container img {
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
   -o-object-position: 50% 50%;
      object-position: 50% 50%;
 }
-.dog-gif .dog-info,
-.random-dog .dog-info {
+.dog-section .dog-info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -382,16 +378,13 @@ header {
           align-items: center;
   gap: 0.5em;
 }
-.dog-gif .dog-info p,
-.random-dog .dog-info p {
+.dog-section .dog-info p {
   text-align: center;
 }
-.dog-gif .dog-info-container,
-.random-dog .dog-info-container {
+.dog-section .dog-info-container {
   padding: 2em 3em;
 }
-.dog-gif .dog-info-container h2,
-.random-dog .dog-info-container h2 {
+.dog-section .dog-info-container h2 {
   text-align: center;
   padding-bottom: 0.7em;
 }
