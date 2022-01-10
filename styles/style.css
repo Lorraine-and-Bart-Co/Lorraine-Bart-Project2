@@ -383,6 +383,7 @@ main {
   color: whitesmoke;
   max-height: 100vh;
   margin: 2em 0;
+  overflow: hidden;
 }
 .dog-section .image-container {
   height: 50vh;
@@ -408,7 +409,7 @@ main {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  gap: 1em;
+  gap: 0.5em;
 }
 .dog-section .button-container .btn-style {
   font-size: 0.8rem;
@@ -423,6 +424,9 @@ main {
   color: black;
   text-align: center;
   border: 2px solid transparent;
+  width: 200px;
+  -ms-flex-item-align: center;
+      align-self: center;
 }
 .dog-section .button-container a.btn-style:hover,
 .dog-section .button-container a.btn-style:focus {
@@ -475,7 +479,6 @@ main {
 }
 .dog-section .dog-info-container h2 {
   text-align: center;
-  padding-bottom: 0.7em;
 }
 .dog-section .dog-info-container a.btn-style {
   margin-top: 0.5em;
