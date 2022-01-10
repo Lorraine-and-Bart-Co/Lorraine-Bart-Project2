@@ -281,6 +281,7 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-bottom: 2em;
 }
 
 .btn-style {
@@ -335,6 +336,21 @@ header {
           align-items: center;
 }
 
+main {
+  height: 100vh;
+  background-color: black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .dog-section {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -346,22 +362,18 @@ header {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 100vh;
   background-color: black;
   color: whitesmoke;
+  max-height: 100vh;
 }
 .dog-section .image-container {
-  max-height: 45%;
   margin: 0 auto;
   text-align: center;
 }
 .dog-section .image-container img {
   height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  -o-object-fit: cover;
+     object-fit: cover;
   -o-object-position: 50% 50%;
      object-position: 50% 50%;
 }
@@ -392,13 +404,16 @@ header {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
   gap: 0.5em;
 }
 .dog-section .dog-info p {
-  text-align: center;
+  text-align: start;
+}
+.dog-section .dog-info p .hello {
+  font-size: 5rem;
 }
 .dog-section .dog-info-container {
   display: -webkit-box;
@@ -411,7 +426,6 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 2em 3em;
 }
 .dog-section .dog-info-container h2 {
   text-align: center;
@@ -425,6 +439,7 @@ footer {
   padding: 1em 0;
   background-color: black;
   border-top: solid 2px rgba(243, 239, 239, 0.7);
+  margin-top: 2em;
 }
 footer p {
   color: whitesmoke;
@@ -486,5 +501,13 @@ footer ul i {
         -ms-flex-pack: center;
             justify-content: center;
     gap: 2em;
+  }
+}
+@media (min-width: 1100px) {
+  .dog-section {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
   }
 }
