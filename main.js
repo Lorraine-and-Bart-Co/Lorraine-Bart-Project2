@@ -80,7 +80,8 @@ dogFinderApp.getDoggo = (imageType) => {
 
 dogFinderApp.bringMeBack = () => {
     // we want our page to scroll back to our header first
-    window.scrollTo(0,0);
+    
+    setTimeout(window.scrollTo(0,0), 1000);
 
     // secondly we want our section to clear of all populated data
     dogFinderApp.displaySection.innerHTML = '';
