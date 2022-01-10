@@ -23,6 +23,18 @@ header {
         font-weight: 800;
         letter-spacing: 1px;
         color: black;
+        border: 2px solid transparent;
+
+    }
+
+    .btn-style:hover, 
+    .btn-style:focus {
+        background-color: black;
+        border: solid 2px rgb(224, 160, 80);
+        color:whitesmoke;
+        transition: all .3s ease-out;
+        
+
     }
 
 .dog-finder-logo {
@@ -43,6 +55,16 @@ header {
         font-size: clamp(.8rem, .8rem + 2vw, 3.4rem);
         color: whitesmoke;
         letter-spacing: 1px;
+        text-shadow: 2px 1px 2px black;
+    }
+
+    .header-paragraph {
+        font-weight: 600;
+        color: whitesmoke;
+        text-shadow: 2px 1px 2px black;
+        width:95%;
+        max-width: 800px;
+        text-align: center;
     }
 
   
