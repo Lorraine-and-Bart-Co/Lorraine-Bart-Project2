@@ -1,6 +1,6 @@
 // Lets write some pseudo-code!!
 // Have a header with 1 button that is named GIF
-// store the button in a variable named const giphyBtn;
+// store the button in a variable named const gifBtn;
 // Attach an eventListener: 'click';
 // Event listener will call the API handler function
 
@@ -73,6 +73,8 @@ dogFinderApp.getDoggo = (imageType) => {
         console.log(`Your error is ${err}.`);
     })
 }
+
+// Stretch Goal
 // variable which will take a url string and return us a promise
 // const arrayOfPromises = dogFinderApp.gifUrls.map((individualEndpoint) => {
 //       return fetch(individualEndpoint)
@@ -85,14 +87,13 @@ dogFinderApp.getDoggo = (imageType) => {
 //     });
 
 
-// Fetch request to the Dog Api for giffy images
+// Fetch request to the Dog Api for gif images
 dogFinderApp.getGif = () => {
     const url = new URL(dogFinderApp.url);
     url.search = new URLSearchParams({
         client_id: dogFinderApp.apiKey,
         mime_types: 'gif',
-        // has_breeds: true,
-        // limit: 15
+      
     })
 
     fetch(url)
@@ -101,13 +102,13 @@ dogFinderApp.getGif = () => {
     })
     .then((jsonData) => {
         dogFinderApp.displayGif(jsonData);
-        console.log(jsonData);
+       
     })
     .catch((err) => {
         console.log(`Your error is ${err}.`);
     })
 
-
+// Stretch Goal
     // Promise.all(arrayOfPromises)
     // .then( (gifAndFactObjects) => {
     //   console.log(gifAndFactObjects);
@@ -116,9 +117,9 @@ dogFinderApp.getGif = () => {
 
 
 
-// we need a "display to page" function that will display tha giphy
+// we need a "display to page" function that will display the gif
 // this function will clear everything on the page first
-// we do this using innerHTML = ''; on the giphy container
+// we do this using innerHTML = ''; on the gif container
 
 dogFinderApp.bringMeBack = () => {
     // we want our page to scroll back to our header first
@@ -281,10 +282,5 @@ dogFinderApp.displayDoggo = (dogObject) => {
 
 
 
-// just an idea
-// the giphy container will have an id and when the button/link is clicked <a href="#giphy-container"></a>
-
-// stretch goals
-// Choose your own adventure button that will lead to either a giph dog, a breed funny dog, or a random dog
 
 dogFinderApp.init();
