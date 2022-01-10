@@ -145,7 +145,7 @@ dogFinderApp.displayGif = (gifObject) => {
     const gifImg = document.createElement('img');
 
     // setting class on image container, and setting image src and alt attributes
-    gifContainer.classList.add('image-container');
+    gifContainer.classList.add('gif-image-container');
     gifImg.src = gifObject[0].url;
     gifImg.alt = 'Funny dog gif.';
 
