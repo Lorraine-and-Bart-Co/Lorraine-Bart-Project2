@@ -293,6 +293,16 @@ header {
   font-weight: 800;
   letter-spacing: 1px;
   color: black;
+  border: 2px solid transparent;
+}
+
+.btn-style:hover,
+.btn-style:focus {
+  background-color: black;
+  border: solid 2px #e0a050;
+  color: whitesmoke;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
 }
 
 .dog-finder-logo {
@@ -320,6 +330,15 @@ header {
   font-size: clamp(.8rem, .8rem + 2vw, 3.4rem);
   color: whitesmoke;
   letter-spacing: 1px;
+  text-shadow: 2px 1px 2px black;
+}
+.dog-finder-selection-flex .header-paragraph {
+  font-weight: 600;
+  color: whitesmoke;
+  text-shadow: 2px 1px 2px black;
+  width: 95%;
+  max-width: 800px;
+  text-align: center;
 }
 .dog-finder-selection-flex ul {
   display: -webkit-box;
@@ -403,6 +422,15 @@ main {
   letter-spacing: 1px;
   color: black;
   text-align: center;
+  border: 2px solid transparent;
+}
+.dog-section .button-container a.btn-style:hover,
+.dog-section .button-container a.btn-style:focus {
+  background-color: black;
+  border: solid 2px #e0a050;
+  color: whitesmoke;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
 }
 .dog-section .dog-info {
   display: -webkit-box;
@@ -479,7 +507,7 @@ footer ul {
       -ms-flex-align: center;
           align-items: center;
 }
-footer ul li {
+footer ul a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
