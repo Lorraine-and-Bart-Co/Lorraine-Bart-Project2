@@ -132,19 +132,54 @@ dogFinderApp.bringMeBack = () => {
 
 dogFinderApp.displayGif = (gifObject) => {
     // Creating container for the dog gif :
+    // defining some variables to hold image and to store image and to store button
     const gifContainer = document.createElement('div');
-    gifContainer.classList.add('image-container');
-
+    const btnContainer = document.createElement('div');
     const gifImg = document.createElement('img');
+
+    // setting class on image container, and setting image src and alt attributes
+    gifContainer.classList.add('image-container');
     gifImg.src = gifObject[0].url;
     gifImg.alt = 'Funny dog gif.';
 
+
+    // appending image to image container
     gifContainer.appendChild(gifImg);
+
+    // Creating a button below dog
+    const searchAgainBtn = document.createElement('a');
+    searchAgainBtn.classList.add('btn-style');
+    searchAgainBtn.textContent = 'Search Again';
+
+    // Create event listener, upon 'click' button will take user to the top of the page and reset the inner html to '';
+    searchAgainBtn.addEventListener('click', dogFinderApp.bringMeBack);
+
+    // will store button in container 
+    btnContainer.appendChild(searchAgainBtn);
+
+    btnContainer.classList.add('dog-info-container');
+
+    // need to clone our random gif button in order to show it in the dog-section
+    const cloneBtn = dogFinderApp.gifBtn.cloneNode(true);
+    cloneBtn.textContent = 'Get Another Gif';
+
+    //we need to readd the event listener to the cloned node
+    cloneBtn.addEventListener('click', () => {
+    // on click a class gets added to the dogSection in order for it to appear
+    dogFinderApp.dogSection.classList.add('dog-section');
+    dogFinderApp.getGif();
+
+
+    });
+
+    // finally we can append the cloned btn
+    btnContainer.appendChild(cloneBtn);
+
 
     dogFinderApp.dogSection.innerHTML = '';
     dogFinderApp.dogSection.append(gifContainer);
-    
-    
+    dogFinderApp.dogSection.append(btnContainer);
+
 
 
 }
@@ -155,6 +190,9 @@ dogFinderApp.displayDoggo = (dogObject) => {
     dogFactArray.push(`Life Span: ${dogObject[0].breeds[0].life_span}`);
     dogFactArray.push(`Bred For: ${dogObject[0].breeds[0].bred_for}`);
     dogFactArray.push(`Weight: ${dogObject[0].breeds[0].weight.metric} kg`);
+
+    // defining some variables to hold stuff
+    const btnContainer = document.createElement('div');
 
     const imgContainer = document.createElement('div');
     imgContainer.classList.add('image-container');
@@ -203,16 +241,38 @@ dogFinderApp.displayDoggo = (dogObject) => {
     searchAgainBtn.classList.add('btn-style');
     searchAgainBtn.textContent = 'Search Again';
 
+
+
     // Create event listener, upon 'click' button will take user to the top of the page and reset the inner html to '';
 
     searchAgainBtn.addEventListener('click', dogFinderApp.bringMeBack);
-    breedInfo.appendChild(searchAgainBtn);
+
+     // will store button in container 
+    btnContainer.appendChild(searchAgainBtn);
+
+    btnContainer.classList.add('dog-info-container');
+
+    // need to clone our random gif button in order to show it in the dog-section
+    const cloneBtn = dogFinderApp.randomBtn.cloneNode(true);
+    cloneBtn.textContent = 'Get Another Dog';
+
+    //we need to readd the event listener to the cloned node
+    cloneBtn.addEventListener('click', () => {
+    // on click a class gets added to the dogSection in order for it to appear
+    dogFinderApp.dogSection.classList.add('dog-section');
+    dogFinderApp.getDoggo();
+    });
+
+    // finally we can append the cloned btn
+    btnContainer.appendChild(cloneBtn);
+    
 
     
     // we are clearing the section, and then putting data into it
     dogFinderApp.dogSection.innerHTML = '';
     dogFinderApp.dogSection.append(imgContainer);
     dogFinderApp.dogSection.append(breedInfo);
+    dogFinderApp.dogSection.append(btnContainer);
     
 }
 
