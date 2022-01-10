@@ -157,7 +157,7 @@ dogFinderApp.displayGif = (gifObject) => {
     // will store button in container 
     btnContainer.appendChild(searchAgainBtn);
 
-    btnContainer.classList.add('dog-info-container');
+    btnContainer.classList.add('button-container');
 
     // need to clone our random gif button in order to show it in the dog-section
     const cloneBtn = dogFinderApp.gifBtn.cloneNode(true);
@@ -250,7 +250,7 @@ dogFinderApp.displayDoggo = (dogObject) => {
      // will store button in container 
     btnContainer.appendChild(searchAgainBtn);
 
-    btnContainer.classList.add('dog-info-container');
+    btnContainer.classList.add('button-container');
 
     // need to clone our random gif button in order to show it in the dog-section
     const cloneBtn = dogFinderApp.randomBtn.cloneNode(true);
@@ -273,6 +273,9 @@ dogFinderApp.displayDoggo = (dogObject) => {
     dogFinderApp.dogSection.append(imgContainer);
     dogFinderApp.dogSection.append(breedInfo);
     dogFinderApp.dogSection.append(btnContainer);
+
+    // Moving search again buttons into the same container as the info
+    breedInfo.appendChild(btnContainer);
     
 }
 

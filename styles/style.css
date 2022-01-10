@@ -365,6 +365,25 @@ header {
   -o-object-position: 50% 50%;
      object-position: 50% 50%;
 }
+.dog-section .button-container {
+  margin-top: 1.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1em;
+}
+.dog-section .button-container .btn-style {
+  font-size: 0.8rem;
+  background-color: whitesmoke;
+  border: none;
+  padding: 0.5em 0.6em;
+  border-radius: 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: black;
+}
 .dog-section .dog-info {
   display: -webkit-box;
   display: -ms-flexbox;
