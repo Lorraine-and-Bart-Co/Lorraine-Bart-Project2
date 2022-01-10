@@ -1,6 +1,6 @@
 // Lets write some pseudo-code!!
 // Have a header with 1 button that is named GIF
-// store the button in a variable named const giphyBtn;
+// store the button in a variable named const gifBtn;
 // Attach an eventListener: 'click';
 // Event listener will call the API handler function
 
@@ -17,6 +17,7 @@ dogFinderApp.randomBtn = document.querySelector('.random-btn');
 
 // section variables
 dogFinderApp.dogSection = document.getElementById('dog-section');
+dogFinderApp.main = document.getElementById('main');
 
 dogFinderApp.eventHandler = () => {
 
@@ -26,6 +27,8 @@ dogFinderApp.eventHandler = () => {
     dogFinderApp.dogSection.classList.add('dog-section');
     dogFinderApp.getGif();
 
+    dogFinderApp.main.style.height = '100vh';
+
 
     })
 
@@ -34,6 +37,8 @@ dogFinderApp.eventHandler = () => {
         // we will remove the innerHTML as well to get rid of 
         dogFinderApp.dogSection.classList.add('dog-section');
         dogFinderApp.getDoggo();
+
+        dogFinderApp.main.style.height = '100vh';
     });
 
 }
@@ -73,6 +78,8 @@ dogFinderApp.getDoggo = (imageType) => {
         console.log(`Your error is ${err}.`);
     })
 }
+
+// Stretch Goal
 // variable which will take a url string and return us a promise
 // const arrayOfPromises = dogFinderApp.gifUrls.map((individualEndpoint) => {
 //       return fetch(individualEndpoint)
@@ -85,14 +92,13 @@ dogFinderApp.getDoggo = (imageType) => {
 //     });
 
 
-// Fetch request to the Dog Api for giffy images
+// Fetch request to the Dog Api for gif images
 dogFinderApp.getGif = () => {
     const url = new URL(dogFinderApp.url);
     url.search = new URLSearchParams({
         client_id: dogFinderApp.apiKey,
         mime_types: 'gif',
-        // has_breeds: true,
-        // limit: 15
+      
     })
 
     fetch(url)
@@ -101,13 +107,13 @@ dogFinderApp.getGif = () => {
     })
     .then((jsonData) => {
         dogFinderApp.displayGif(jsonData);
-        console.log(jsonData);
+       
     })
     .catch((err) => {
         console.log(`Your error is ${err}.`);
     })
 
-
+// Stretch Goal
     // Promise.all(arrayOfPromises)
     // .then( (gifAndFactObjects) => {
     //   console.log(gifAndFactObjects);
@@ -116,9 +122,9 @@ dogFinderApp.getGif = () => {
 
 
 
-// we need a "display to page" function that will display tha giphy
+// we need a "display to page" function that will display the gif
 // this function will clear everything on the page first
-// we do this using innerHTML = ''; on the giphy container
+// we do this using innerHTML = ''; on the gif container
 
 dogFinderApp.bringMeBack = () => {
     // we want our page to scroll back to our header first
@@ -128,6 +134,7 @@ dogFinderApp.bringMeBack = () => {
     // secondly we want our section to clear of all populated data
     dogFinderApp.dogSection.innerHTML = '';
     dogFinderApp.dogSection.classList.remove('dog-section');
+    dogFinderApp.main.style.height = 0;
 };
 
 dogFinderApp.displayGif = (gifObject) => {
@@ -138,7 +145,7 @@ dogFinderApp.displayGif = (gifObject) => {
     const gifImg = document.createElement('img');
 
     // setting class on image container, and setting image src and alt attributes
-    gifContainer.classList.add('image-container');
+    gifContainer.classList.add('gif-image-container');
     gifImg.src = gifObject[0].url;
     gifImg.alt = 'Funny dog gif.';
 
@@ -157,7 +164,7 @@ dogFinderApp.displayGif = (gifObject) => {
     // will store button in container 
     btnContainer.appendChild(searchAgainBtn);
 
-    btnContainer.classList.add('dog-info-container');
+    btnContainer.classList.add('button-container');
 
     // need to clone our random gif button in order to show it in the dog-section
     const cloneBtn = dogFinderApp.gifBtn.cloneNode(true);
@@ -250,7 +257,7 @@ dogFinderApp.displayDoggo = (dogObject) => {
      // will store button in container 
     btnContainer.appendChild(searchAgainBtn);
 
-    btnContainer.classList.add('dog-info-container');
+    btnContainer.classList.add('button-container');
 
     // need to clone our random gif button in order to show it in the dog-section
     const cloneBtn = dogFinderApp.randomBtn.cloneNode(true);
@@ -273,15 +280,13 @@ dogFinderApp.displayDoggo = (dogObject) => {
     dogFinderApp.dogSection.append(imgContainer);
     dogFinderApp.dogSection.append(breedInfo);
     dogFinderApp.dogSection.append(btnContainer);
+
+    // Moving search again buttons into the same container as the info
+    breedInfo.appendChild(btnContainer);
     
 }
 
 
 
-// just an idea
-// the giphy container will have an id and when the button/link is clicked <a href="#giphy-container"></a>
-
-// stretch goals
-// Choose your own adventure button that will lead to either a giph dog, a breed funny dog, or a random dog
 
 dogFinderApp.init();

@@ -1,0 +1,23 @@
+// 1100px Media Query
+
+@media (min-width: 1100px) {
+    // .dog-section begins here
+    .dog-section {
+        flex-direction: row;
+        max-height: 100vh;
+        gap: 5em;
+
+        .image-container {
+            height: 95vh;
+            margin-bottom: 0;
+        }
+
+        .dog-info {
+            align-items: start;
+
+            p {
+                text-align: start;
+            }
+        }
+    }
+}

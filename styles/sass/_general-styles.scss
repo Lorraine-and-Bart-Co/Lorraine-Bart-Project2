@@ -1,3 +1,4 @@
+// General Styles.scss
 html {
     font-size: 125%;
     scroll-behavior: smooth;
@@ -5,6 +6,7 @@ html {
 
 body {
     font-family: 'Raleway', sans-serif;
+    background-color: black;
 }
 
 h1 {
@@ -29,6 +31,5 @@ img {
 
 .wrapper {
     max-width: 1200px;
-    width: 90%;
     margin: 0 auto;
 }
