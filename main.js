@@ -24,6 +24,7 @@ dogFinderApp.eventHandler = () => {
     dogFinderApp.gifBtn.addEventListener('click', () => {
     // on click a class gets added to the dogSection in order for it to appear
     dogFinderApp.dogSection.classList.add('dog-section');
+    dogFinderApp.getGif();
 
 
     })
@@ -45,8 +46,6 @@ dogFinderApp.init = () => {
 // Store URL on Dog Finder App a property 
 dogFinderApp.url = 'https://api.thedogapi.com/v1/images/search';
 
-// Store URL array required for gif section
-dogFinderApp.gifUrls = ['https://api.thedogapi.com/v1/images/search?mime_types=gif', 'http://dog-api.kinduff.com/api/facts?number=1'];
 
 // Store API key on the Dog Finder App object as a property:
 
@@ -75,23 +74,44 @@ dogFinderApp.getDoggo = (imageType) => {
     })
 }
 // variable which will take a url string and return us a promise
-const arrayOfPromises = dogFinderApp.gifUrls.map((individualEndpoint) => {
-      return fetch(individualEndpoint)
-                  .then((res) => {
-                    return res.json()
-                  })
-                  .then((jsonData) => {
-                    return jsonData;
-                  });
-    });
+// const arrayOfPromises = dogFinderApp.gifUrls.map((individualEndpoint) => {
+//       return fetch(individualEndpoint)
+//                   .then((res) => {
+//                     return res.json()
+//                   })
+//                   .then((jsonData) => {
+//                     return jsonData;
+//                   });
+//     });
 
 
 // Fetch request to the Dog Api for giffy images
 dogFinderApp.getGif = () => {
-    Promise.all(arrayOfPromises)
-    .then( (gifAndFactObjects) => {
-      console.log(gifAndFactObjects);
-    });
+    const url = new URL(dogFinderApp.url);
+    url.search = new URLSearchParams({
+        client_id: dogFinderApp.apiKey,
+        mime_types: 'gif',
+        // has_breeds: true,
+        // limit: 15
+    })
+
+    fetch(url)
+    .then((response) => {
+        return response.json();
+    })
+    .then((jsonData) => {
+        dogFinderApp.displayGif(jsonData);
+        console.log(jsonData);
+    })
+    .catch((err) => {
+        console.log(`Your error is ${err}.`);
+    })
+
+
+    // Promise.all(arrayOfPromises)
+    // .then( (gifAndFactObjects) => {
+    //   console.log(gifAndFactObjects);
+    // });
 }
 
 
@@ -110,7 +130,24 @@ dogFinderApp.bringMeBack = () => {
     dogFinderApp.dogSection.classList.remove('dog-section');
 };
 
+dogFinderApp.displayGif = (gifObject) => {
+    // Creating container for the dog gif :
+    const gifContainer = document.createElement('div');
+    gifContainer.classList.add('image-container');
 
+    const gifImg = document.createElement('img');
+    gifImg.src = gifObject[0].url;
+    gifImg.alt = 'Funny dog gif.';
+
+    gifContainer.appendChild(gifImg);
+
+    dogFinderApp.dogSection.innerHTML = '';
+    dogFinderApp.dogSection.append(gifContainer);
+    
+    
+
+
+}
 
 dogFinderApp.displayDoggo = (dogObject) => {
     const dogFactArray = [];
