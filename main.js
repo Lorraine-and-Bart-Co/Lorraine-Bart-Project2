@@ -16,12 +16,14 @@ dogFinderApp.gifBtn = document.querySelector('.gif-btn');
 dogFinderApp.randomBtn = document.querySelector('.random-btn');
 
 // section variables
-dogFinderApp.randomSection = document.getElementById('dog-section');
+dogFinderApp.dogSection = document.getElementById('dog-section');
 
 dogFinderApp.eventHandler = () => {
 
     // define event handler for the gif button
     dogFinderApp.gifBtn.addEventListener('click', () => {
+    // on click a class gets added to the dogSection in order for it to appear
+    dogFinderApp.dogSection.classList.add('dog-section');
 
 
     })
@@ -29,7 +31,7 @@ dogFinderApp.eventHandler = () => {
     // define an event listener for the random-dog button
     dogFinderApp.randomBtn.addEventListener('click', () => {
         // we will remove the innerHTML as well to get rid of 
-        dogFinderApp.randomSection.classList.add('dog-section');
+        dogFinderApp.dogSection.classList.add('dog-section');
         dogFinderApp.getDoggo();
     });
 
@@ -41,15 +43,16 @@ dogFinderApp.init = () => {
 };
 
 // Store URL on Dog Finder App a property 
-
 dogFinderApp.url = 'https://api.thedogapi.com/v1/images/search';
+
+// Store URL array required for gif section
+dogFinderApp.gifUrls = ['https://api.thedogapi.com/v1/images/search?mime_types=gif', 'http://dog-api.kinduff.com/api/facts?number=1'];
 
 // Store API key on the Dog Finder App object as a property:
 
 dogFinderApp.apiKey = '67a37282-d23d-40cd-8461-024b9f0a2266';
 
-// Fetch request to the Dog API 
-
+// Fetch request to the Dog API for static images
 dogFinderApp.getDoggo = (imageType) => {
     const url = new URL(dogFinderApp.url);
     url.search = new URLSearchParams({
@@ -71,6 +74,25 @@ dogFinderApp.getDoggo = (imageType) => {
         console.log(`Your error is ${err}.`);
     })
 }
+// variable which will take a url string and return us a promise
+const arrayOfPromises = dogFinderApp.gifUrls.map((individualEndpoint) => {
+      return fetch(individualEndpoint)
+                  .then((res) => {
+                    return res.json()
+                  })
+                  .then((jsonData) => {
+                    return jsonData;
+                  });
+    });
+
+
+// Fetch request to the Dog Api for giffy images
+dogFinderApp.getGif = () => {
+    Promise.all(arrayOfPromises)
+    .then( (gifAndFactObjects) => {
+      console.log(gifAndFactObjects);
+    });
+}
 
 
 
@@ -84,8 +106,8 @@ dogFinderApp.bringMeBack = () => {
     setTimeout(window.scrollTo(0,0), 1000);
 
     // secondly we want our section to clear of all populated data
-    dogFinderApp.displaySection.innerHTML = '';
-    dogFinderApp.displaySection.classList.remove('dog-section');
+    dogFinderApp.dogSection.innerHTML = '';
+    dogFinderApp.dogSection.classList.remove('dog-section');
 };
 
 
@@ -150,13 +172,10 @@ dogFinderApp.displayDoggo = (dogObject) => {
     breedInfo.appendChild(searchAgainBtn);
 
     
-
-
-
-    dogFinderApp.displaySection = document.querySelector('.dog-section');
-    dogFinderApp.displaySection.innerHTML = '';
-    dogFinderApp.displaySection.append(imgContainer);
-    dogFinderApp.displaySection.append(breedInfo);
+    // we are clearing the section, and then putting data into it
+    dogFinderApp.dogSection.innerHTML = '';
+    dogFinderApp.dogSection.append(imgContainer);
+    dogFinderApp.dogSection.append(breedInfo);
     
 }
 
