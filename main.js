@@ -17,6 +17,7 @@ dogFinderApp.randomBtn = document.querySelector('.random-btn');
 
 // section variables
 dogFinderApp.dogSection = document.getElementById('dog-section');
+dogFinderApp.main = document.getElementById('main');
 
 dogFinderApp.eventHandler = () => {
 
@@ -26,6 +27,8 @@ dogFinderApp.eventHandler = () => {
     dogFinderApp.dogSection.classList.add('dog-section');
     dogFinderApp.getGif();
 
+    dogFinderApp.main.style.height = '100vh';
+
 
     })
 
@@ -34,6 +37,8 @@ dogFinderApp.eventHandler = () => {
         // we will remove the innerHTML as well to get rid of 
         dogFinderApp.dogSection.classList.add('dog-section');
         dogFinderApp.getDoggo();
+
+        dogFinderApp.main.style.height = '100vh';
     });
 
 }
@@ -129,6 +134,7 @@ dogFinderApp.bringMeBack = () => {
     // secondly we want our section to clear of all populated data
     dogFinderApp.dogSection.innerHTML = '';
     dogFinderApp.dogSection.classList.remove('dog-section');
+    dogFinderApp.main.style.height = 0;
 };
 
 dogFinderApp.displayGif = (gifObject) => {

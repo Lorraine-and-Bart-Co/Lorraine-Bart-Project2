@@ -1,7 +1,6 @@
 //Sections.scss
 
 main {
-    height: 100vh;
     background-color: black;
     display: flex;
     flex-direction: column;
@@ -14,6 +13,7 @@ main {
     background-color:black;
     color: whitesmoke;
     max-height: 100vh;
+    margin: 2em 0;
 
     .image-container {
         // width:100%;

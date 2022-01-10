@@ -240,6 +240,7 @@ html {
 
 body {
   font-family: "Raleway", sans-serif;
+  background-color: black;
 }
 
 h1 {
@@ -263,7 +264,6 @@ img {
 
 .wrapper {
   max-width: 1200px;
-  width: 90%;
   margin: 0 auto;
 }
 
@@ -281,7 +281,6 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-bottom: 2em;
 }
 
 .btn-style {
@@ -337,7 +336,6 @@ header {
 }
 
 main {
-  height: 100vh;
   background-color: black;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -365,6 +363,7 @@ main {
   background-color: black;
   color: whitesmoke;
   max-height: 100vh;
+  margin: 2em 0;
 }
 .dog-section .image-container {
   margin: 0 auto;
@@ -439,7 +438,6 @@ footer {
   padding: 1em 0;
   background-color: black;
   border-top: solid 2px rgba(243, 239, 239, 0.7);
-  margin-top: 2em;
 }
 footer p {
   color: whitesmoke;
