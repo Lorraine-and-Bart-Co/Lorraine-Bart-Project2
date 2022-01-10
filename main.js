@@ -16,32 +16,24 @@ dogFinderApp.gifBtn = document.querySelector('.gif-btn');
 dogFinderApp.randomBtn = document.querySelector('.random-btn');
 
 // section variables
-dogFinderApp.gifSection = document.getElementById('gif');
-dogFinderApp.randomSection = document.getElementById('random-dog');
+dogFinderApp.dogSection = document.getElementById('dog-section');
 
 dogFinderApp.eventHandler = () => {
 
     // define event handler for the gif button
     dogFinderApp.gifBtn.addEventListener('click', () => {
-        // remove the other sections when this button is clicked
-        dogFinderApp.randomSection.classList.remove('random-dog');
-        // we will remove the innerHTML as well to get rid of content
-        dogFinderApp.randomSection.innerHTML = '';
+    // on click a class gets added to the dogSection in order for it to appear
+    dogFinderApp.dogSection.classList.add('dog-section');
+    dogFinderApp.getGif();
 
-        // added dog-gif class to section so that it appears
-        dogFinderApp.gifSection.classList.add('dog-gif');
-        dogFinderApp.getDoggo('gif', '.dog-gif');
+
     })
 
     // define an event listener for the random-dog button
     dogFinderApp.randomBtn.addEventListener('click', () => {
-        // remove the other sections when this button is clicked
-        dogFinderApp.gifSection.classList.remove('dog-gif');
-        // we will remove the innerHTML as well to get rid of content
-        dogFinderApp.gifSection.innerHTML = '';
-
-        dogFinderApp.randomSection.classList.add('random-dog');
-        dogFinderApp.getDoggo('png', '.random-dog');
+        // we will remove the innerHTML as well to get rid of 
+        dogFinderApp.dogSection.classList.add('dog-section');
+        dogFinderApp.getDoggo();
     });
 
 }
@@ -52,16 +44,15 @@ dogFinderApp.init = () => {
 };
 
 // Store URL on Dog Finder App a property 
-
 dogFinderApp.url = 'https://api.thedogapi.com/v1/images/search';
+
 
 // Store API key on the Dog Finder App object as a property:
 
 dogFinderApp.apiKey = '67a37282-d23d-40cd-8461-024b9f0a2266';
 
-// Fetch request to the Dog API 
-
-dogFinderApp.getDoggo = (imageType, section) => {
+// Fetch request to the Dog API for static images
+dogFinderApp.getDoggo = (imageType) => {
     const url = new URL(dogFinderApp.url);
     url.search = new URLSearchParams({
         client_id: dogFinderApp.apiKey,
@@ -75,12 +66,52 @@ dogFinderApp.getDoggo = (imageType, section) => {
         return response.json();
     })
     .then((jsonData) => {
-        dogFinderApp.displayDoggo(jsonData, section);
+        dogFinderApp.displayDoggo(jsonData);
         // console.log(jsonData);
     })
     .catch((err) => {
         console.log(`Your error is ${err}.`);
     })
+}
+// variable which will take a url string and return us a promise
+// const arrayOfPromises = dogFinderApp.gifUrls.map((individualEndpoint) => {
+//       return fetch(individualEndpoint)
+//                   .then((res) => {
+//                     return res.json()
+//                   })
+//                   .then((jsonData) => {
+//                     return jsonData;
+//                   });
+//     });
+
+
+// Fetch request to the Dog Api for giffy images
+dogFinderApp.getGif = () => {
+    const url = new URL(dogFinderApp.url);
+    url.search = new URLSearchParams({
+        client_id: dogFinderApp.apiKey,
+        mime_types: 'gif',
+        // has_breeds: true,
+        // limit: 15
+    })
+
+    fetch(url)
+    .then((response) => {
+        return response.json();
+    })
+    .then((jsonData) => {
+        dogFinderApp.displayGif(jsonData);
+        console.log(jsonData);
+    })
+    .catch((err) => {
+        console.log(`Your error is ${err}.`);
+    })
+
+
+    // Promise.all(arrayOfPromises)
+    // .then( (gifAndFactObjects) => {
+    //   console.log(gifAndFactObjects);
+    // });
 }
 
 
@@ -91,16 +122,34 @@ dogFinderApp.getDoggo = (imageType, section) => {
 
 dogFinderApp.bringMeBack = () => {
     // we want our page to scroll back to our header first
-    window.scrollTo(0,0);
+    
+    setTimeout(window.scrollTo(0,0), 1000);
 
     // secondly we want our section to clear of all populated data
-    dogFinderApp.displaySection.innerHTML = '';
-    dogFinderApp.displaySection.classList.remove('random-dog');
+    dogFinderApp.dogSection.innerHTML = '';
+    dogFinderApp.dogSection.classList.remove('dog-section');
 };
 
+dogFinderApp.displayGif = (gifObject) => {
+    // Creating container for the dog gif :
+    const gifContainer = document.createElement('div');
+    gifContainer.classList.add('image-container');
+
+    const gifImg = document.createElement('img');
+    gifImg.src = gifObject[0].url;
+    gifImg.alt = 'Funny dog gif.';
+
+    gifContainer.appendChild(gifImg);
+
+    dogFinderApp.dogSection.innerHTML = '';
+    dogFinderApp.dogSection.append(gifContainer);
+    
+    
 
 
-dogFinderApp.displayDoggo = (dogObject, section) => {
+}
+
+dogFinderApp.displayDoggo = (dogObject) => {
     const dogFactArray = [];
     dogFactArray.push(`Temperament: ${dogObject[0].breeds[0].temperament}`);
     dogFactArray.push(`Life Span: ${dogObject[0].breeds[0].life_span}`);
@@ -160,13 +209,10 @@ dogFinderApp.displayDoggo = (dogObject, section) => {
     breedInfo.appendChild(searchAgainBtn);
 
     
-
-
-
-    dogFinderApp.displaySection = document.querySelector(section);
-    dogFinderApp.displaySection.innerHTML = '';
-    dogFinderApp.displaySection.append(imgContainer);
-    dogFinderApp.displaySection.append(breedInfo);
+    // we are clearing the section, and then putting data into it
+    dogFinderApp.dogSection.innerHTML = '';
+    dogFinderApp.dogSection.append(imgContainer);
+    dogFinderApp.dogSection.append(breedInfo);
     
 }
 
