@@ -5,11 +5,12 @@
         .dog-finder-logo {
             left: 1.5em;
             top: 1.5em;
-        }
+            position: absolute;
+            }
     
         .dog-finder-selection-flex {
             ul {
                 flex-direction: row;
             }
         }
-}
+    };
