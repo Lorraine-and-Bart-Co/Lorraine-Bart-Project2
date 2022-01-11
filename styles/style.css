@@ -282,6 +282,15 @@ header {
       -ms-flex-align: center;
           align-items: center;
 }
+header .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
 
 .btn-style {
   background-color: whitesmoke;
@@ -308,8 +317,7 @@ header {
 .dog-finder-logo {
   width: 200px;
   height: auto;
-  position: absolute;
-  top: 0px;
+  margin: 0 auto;
 }
 
 .dog-finder-selection-flex {
@@ -530,6 +538,7 @@ footer ul i {
   .dog-finder-logo {
     left: 1.5em;
     top: 1.5em;
+    position: absolute;
   }
 
   .dog-finder-selection-flex ul {

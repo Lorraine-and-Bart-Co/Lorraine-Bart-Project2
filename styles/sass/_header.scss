@@ -11,6 +11,11 @@ header {
     justify-content: center;
     align-items: center;
 
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
 }
 
   .btn-style {
@@ -40,8 +45,7 @@ header {
 .dog-finder-logo {
     width: 200px;
     height: auto;
-    position: absolute;
-    top: 0px;
+    margin: 0 auto;
 }
 
 .dog-finder-selection-flex {
