@@ -542,37 +542,45 @@ footer ul i {
 }
 
 .toggle-container {
+  position: relative;
   width: 200px;
-  height: 100%;
-  margin: 0 auto 0;
+  height: 120px;
+  margin: 0 auto;
   -webkit-perspective: 1000;
   -webkit-backface-visibility: hidden;
-  background: #fff;
+  -ms-flex-item-align: center;
+      align-self: center;
 }
 
 .pulse-button {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  margin-left: -50px;
-  margin-top: -50px;
-  display: block;
+  position: absolute;
+  padding-bottom: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  top: 8%;
+  left: 25%;
   width: 100px;
   height: 100px;
-  font-size: 1.3em;
+  font-size: 1rem;
   font-weight: light;
-  font-family: "Trebuchet MS", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   text-align: center;
-  line-height: 100px;
   letter-spacing: -1px;
-  color: white;
+  color: whitesmoke;
   border: none;
   border-radius: 50%;
-  background: #5a99d4;
+  background: black;
   cursor: pointer;
-  -webkit-box-shadow: 0 0 0 0 rgba(90, 153, 212, 0.5);
-          box-shadow: 0 0 0 0 rgba(90, 153, 212, 0.5);
+  -webkit-box-shadow: 0 0 0 0 rgba(224, 160, 80, 0.5);
+          box-shadow: 0 0 0 0 rgba(224, 160, 80, 0.5);
   -webkit-animation: pulse 1.5s infinite;
 }
 
@@ -629,6 +637,12 @@ footer ul i {
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
+  }
+
+  .toggle-container {
+    position: absolute;
+    right: 2.3em;
+    top: 2.2em;
   }
 }
 @media (min-width: 1000px) {
