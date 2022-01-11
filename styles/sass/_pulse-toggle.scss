@@ -1,0 +1,65 @@
+// Styles for our button that toggles between dog & cat mode
+// Code borrowed from Sean Michael : https://codepen.io/seansean11/pen/dhwzj
+
+.toggle-container {
+  position: relative;
+  width: 200px;
+  height: 120px;
+  margin: 0 auto;
+  -webkit-perspective: 1000;
+  -webkit-backface-visibility: hidden;
+  align-self: center;
+
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+}
+
+.pulse-button {
+  position: absolute;
+  padding-bottom: 4px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 8%;
+  left: 25%;
+  // bottom: 0;
+  // right: 0;
+  // margin-left: -50px;
+  // margin-top: -50px;
+  width: 100px;
+  height: 100px;
+  font-size: 1rem;
+  font-weight: light;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  // line-height: 100px;
+  letter-spacing: -1px;
+  color: whitesmoke;
+  border: none;
+  border-radius: 50%;
+  background: black;
+  cursor: pointer;
+  box-shadow: 0 0 0 0 rgba(224, 160, 80, 0.5);
+  -webkit-animation: pulse 1.5s infinite;
+}
+.pulse-button:hover {
+  -webkit-animation: none;
+}
+
+@keyframes pulse {
+  0% {
+    transform: (scale(.9));
+  }
+  70% {
+    transform: (scale(1));
+    box-shadow: 0 0 0 50px rgba(#5a99d4, 0);
+  }
+    100% {
+   transform: (scale(.9));
+    box-shadow: 0 0 0 0 rgba(#5a99d4, 0);
+  }
+}
+

@@ -1,7 +1,19 @@
 // Header.scss
 
-header {
+    // Dog Mode
+.doggo-header {
+
     background-image: url(/assets/hero.jpg);
+
+}   
+
+    // Cat Mode 
+
+.kitty-generator-header {
+    background-image: url(/assets/cat-hero.jpg);
+}
+
+header {
     background-size: cover;
     background-position: center;
     height: 85vh;
@@ -15,6 +27,7 @@ header {
         display: flex;
         flex-direction: column;
     }
+
 
 }
 
@@ -81,3 +94,4 @@ header {
     
     }
 }
+
